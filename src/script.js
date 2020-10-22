@@ -8,13 +8,14 @@ function getEl(id) {
   return document.getElementById(id);
 }
 
-function createForm(id, buttonText, callback) {
+function createForm(id, buttonText, placeholder) {
   const form = createEl("div");
   const input = createEl("input");
   const button = createEl("button");
   form.id = id;
   input.id = "input-" + id;
   button.id = "button-" + id;
+  input.placeholder = placeholder;
   button.textContent = buttonText;
   form.appendChild(input);
   form.appendChild(button);
@@ -36,10 +37,10 @@ function show(el) {
 
 class View {
   constructor() {
-    this.app = getEl("app");
+    this.app = getEl("lane");
     this.heading = createEl("h1");
-    this.addBowler = createForm("add-bowler", "Start Game");
-    this.addShot = createForm("roll-ball", "Roll The Ball");
+    this.addBowler = createForm("add-bowler", "Start Game", "Enter Your Name");
+    this.addShot = createForm("roll-ball", "Roll The Ball", "How many pins?");
     this.total = createEl("div");
     this.total.id = "total";
     hide(this.addShot);
